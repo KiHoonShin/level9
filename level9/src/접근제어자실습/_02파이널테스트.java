@@ -15,6 +15,7 @@ class Test{
 	
 }
 
+
 public class _02파이널테스트 {
 	public static void main(String[] args) {
 	

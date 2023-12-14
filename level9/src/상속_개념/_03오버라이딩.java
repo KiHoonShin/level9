@@ -1,6 +1,7 @@
 package 상속_개념;
 
 class Parent{
+	int a = 10;
 	int num = 100;
 	void test1(){
 		System.out.println("부모 test1 호출");
@@ -8,6 +9,7 @@ class Parent{
 }
 
 class Child extends Parent{
+	int b = 20;
 	int num = 10;
 	void test2() {
 		System.out.println("test2 호출");
