@@ -52,9 +52,8 @@ public class _gameMain {
 						// 좀비턴
 						int heroHitZombie = hero.getPower() / 2;
 						zombie.attack(hero);
-						
-						//zombie.setHp(zombie.getHp() + hero.getPower() / 2);
 						zombie.damageInfo(hero , heroHitZombie);
+						
 					} else {
 						// 포션마시기
 						hero.plusHP();
