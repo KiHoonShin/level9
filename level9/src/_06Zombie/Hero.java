@@ -31,7 +31,7 @@ public class Hero extends Unit {
 	
 	@Override
 	void attack(Unit unit) {
-		this.power = unit.getRd().nextInt(this.getMax())+1;
+		this.power = this.getRd().nextInt(this.getMax())+1;
 		unit.setHp(unit.getHp()-power);
 		damageInfo(unit);
 	}
@@ -49,4 +49,15 @@ public class Hero extends Unit {
 		System.out.println("체력 회복해서"+this.getHp()+"이 되었습니다");
 	}
 	
+	// 보스 공격
+	public void attack(Boss boss) {
+		this.power = this.getRd().nextInt(this.getMax())+1;
+		if(boss.getShield() > 0) {
+			boss.setShield(boss.getShield()-power);
+		} else {
+			boss.setHp(boss.getHp()-power);
+		}
+		System.out.println("히어로가 %d의 공격력으로 보스 공격 : 현재 Boss hp : %d 현재 Boss Shield : %d"
+				.formatted(power, boss.getHp() , boss.getShield()));
+	}
 }

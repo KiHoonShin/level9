@@ -11,7 +11,7 @@ public class Zombie extends Unit {
 	
 	@Override
 	void attack(Unit unit) {
-		this.power = unit.getRd().nextInt(this.getMax())+1;
+		power = this.getRd().nextInt(this.getMax())+1;
 		unit.setHp(unit.getHp()-power);
 		
 	}
@@ -19,6 +19,6 @@ public class Zombie extends Unit {
 	public void damageInfo(Unit unit, int power) {
 		this.setHp(this.getHp()+power);
 		System.out.println("좀비가 %d의 공격력으로 히어로 공격했다! 현재 히어로 hp : %d, 좀비 체력 회복 %d"
-				.formatted(power,unit.getHp(), this.getHp()));
+				.formatted(this.power,unit.getHp(), this.getHp()));
 	}
 }
