@@ -37,50 +37,48 @@ public class _gameMain {
 				System.out.print("좀비를 만났습니다. 공격모드로 바뀝니다. ");
 
 				while (true) {
-					if(hero.isDead()) break;
-					if(zombie.isDead()) {
+					if (hero.isDead())
+						break;
+					if (zombie.isDead()) {
 						System.out.println("좀비를 죽였습니다. 이동할 수 있습니다.");
 						break;
 					}
 					System.out.print("공격하기(1),포션마시기(2): ");
 					int sel = s.nextInt();
-					if(sel == 1) {
-						 // 공격하기
+					if (sel == 1) {
+						// 공격하기
 						hero.attack(zombie);
-						
+
 						// 좀비턴
+						int heroHitZombie = hero.getPower() / 2;
 						zombie.attack(hero);
-						zombie.setHp(zombie.getHp()+hero.getPower() /2); 
-						zombie.damageInfo(hero);
+						
+						//zombie.setHp(zombie.getHp() + hero.getPower() / 2);
+						zombie.damageInfo(hero , heroHitZombie);
 					} else {
 						// 포션마시기
-						if(!hero.drinkPotion()) {
-							System.out.println("모두 사용했습니다.");
-							continue;
-						}
-						System.out.println("체력 회복해서"+hero.getHp()+"이 되었습니다");
+						hero.plusHP();
 					}
-					
-//					if(zombie.getHp() == 0) {
-//						System.out.println("좀비를 죽였습니다. 이동할 수 있습니다.");
-//						break;
-//					}
-//					if(hero.getHp() == 0) {
-//						System.out.println(" ==== 사망 ====");
-//						break;
-//					}
-				 }
 				}
-				
+			}
 				if (hero.getPos() == boss.getPos()) {
 
 					System.out.print("보스를 만났습니다. 공격모드로 바뀝니다. ");
 					while (true) {
-
+						if(hero.isDead()) break;
+						if(boss.isDead()) break;
 						System.out.print("공격하기(1),포션마시기(2): ");
 						int d = s.nextInt();
-
-						break;
+						if(d == 1) {
+							// 히어로 턴
+							hero.attack(zombie);
+							
+							// 보스 턴
+							
+						} else {
+							// 포션 마시기
+							hero.plusHP();
+						}
 					}
 				
 				if (hero.getPos() == 10) {

@@ -16,7 +16,7 @@ public class Hero extends Unit {
 		this.count = count;
 	}
 
-	public boolean drinkPotion() {
+	private boolean drinkPotion() {
 		if(count == 0) {
 			return false;
 		}
@@ -28,12 +28,6 @@ public class Hero extends Unit {
 	public int getPower() {
 		return power;
 	}
-
-//	 public boolean isDead() {
-//		 if(this.dead == true) {
-//			 return true;
-//		 }
-//	 }
 	
 	@Override
 	void attack(Unit unit) {
@@ -46,4 +40,13 @@ public class Hero extends Unit {
 		System.out.println("히어로가 %d의 공격력으로 좀비 공격 : 현재 좀비 hp : %d"
 				.formatted(power, unit.getHp()));
 	}
+	
+	public void plusHP() {
+		if(!drinkPotion()) {
+			System.out.println("모두 사용했습니다.");
+			return;
+		}
+		System.out.println("체력 회복해서"+this.getHp()+"이 되었습니다");
+	}
+	
 }

@@ -18,4 +18,5 @@ public class Boss extends Zombie {
 		super(pos, hp, max);
 		this.shield = shield;
 	}
+	
 }
