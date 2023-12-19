@@ -1,6 +1,6 @@
-package _05인터페이스;
+package _06Zombie;
 
-public class _01인터페이스이론 {
+public class _gameMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
