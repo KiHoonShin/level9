@@ -3,11 +3,15 @@ package _08제네릭클래스;
 import java.util.Arrays;
 
 /*
- * 1. 추가 : add(value) 2. 삭제 : remove(idx) , remove(value) 3. 삽입 : add(idx,
- * value) 4. 수정 : set(idx, value) 5. 갯수 : size 6. 값읽기 : get(idx) : 해당 인덱스의 값을 읽기
+ * 1. 추가 : add(value) 
+ * 2. 삭제 : remove(idx) , remove(value) 
+ * 3. 삽입 : add(idx, value) 
+ * 4. 수정 : set(idx, value) 
+ * 5. 갯수 : size 
+ * 6. 값읽기 : get(idx) : 해당 인덱스의 값을 읽기
  * 7. 전체 삭제 : clear()
  */
-class MyVector {
+class MyVector <T>{
 	int[] arr;
 	int size;
 	int capacity;
