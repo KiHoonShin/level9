@@ -12,11 +12,40 @@ import java.util.*;
 public class Boss extends Zombie {
 
 	Random r = new Random();
-
+	private int power;
 	private int shield;
 	public Boss(int pos, int hp, int max, int shield) {
 		super(pos, hp, max);
 		this.shield = shield;
+	}
+	
+	public int getShield() {
+		return shield;
+	}
+
+	public void setShield(int shield) {
+		this.shield = shield;
+		if(this.shield < 0) {
+			this.shield = 0;
+		}
+	}
+
+	public void attack(Unit unit) {
+		power = r.nextInt(this.getMax())+1;
+		int rNum = r.nextInt(3); // 0 1 2 3 중 1개
+		if(rNum == 0) {
+			//필살기 발동
+			System.out.println("**** 보스의 필살기 발동 2배의 공격력 ****");
+			power *= 2;
+			
+		}  else {
+			System.out.println("[ 보스의 일반 공격 ]");
+		}
+		//일반 공격
+		unit.setHp(unit.getHp()-power);
+		System.out.println("보스가 %d의 공격력으로 히어로 공격! 현재 히어로 hp : %d"
+				.formatted(power,unit.getHp()));
+		
 	}
 	
 }
