@@ -1,5 +1,10 @@
 package _11콜렉션Member;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,7 +17,10 @@ public class MemberDAO {
 	public static MemberDAO getInstance() {
 		return instance;
 	}
-
+	
+	private static String CUR_PATH = System.getProperty("user.dir")+"\\src\\"
+	+ new MemberDAO().getClass().getPackageName()+"\\"; 
+	
 	private ArrayList<Member> memberList;
 	private void init() {
 		memberList = new ArrayList<Member>();
@@ -116,6 +124,62 @@ public class MemberDAO {
 		for(Member m : tempMember) {
 			System.out.println(m);
 		}
+	}
+	
+	// 파일 데이터로 변환
+	private String memberData() {
+		String data = "";
+		for(Member m : memberList) {
+			data += m.getId()+"/"+m.getPw()+"\n";
+		}
+		return data;
+	}
+	
+	// 파일 저장
+	public boolean stockToFile() {
+		String data = memberData();
+		String fileName = "member.txt";
+		try(FileWriter fw = new FileWriter(CUR_PATH+fileName)){
+			fw.write(data);
+			//System.out.println("파일 저장 성공");
+			return true;
+		} catch (IOException e) {
+			//System.out.println("파일 저장 실패");
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	// 파일 불러오기
+	private String roadToFile(){
+		String fileName = "member.txt";
+		try(FileReader fr = new FileReader(CUR_PATH+fileName);
+			BufferedReader br = new BufferedReader(fr)){
+			String data = "";
+			while(true) {
+				String line = br.readLine();
+				if(line == null) {
+					break;
+				}
+				data += line +"\n";
+			}
+			return data;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean roadFileAddList() {
+		String data = roadToFile();
+		if(data == null) return false;
+		String[] temp = data.split("\n");
+		for(int i = 0; i < temp.length; i++) {
+			String[] info = temp[i].split("/");
+			Member member = new Member(info[0],info[1]);
+			memberList.add(member);
+		}
+		return true;
 	}
 	
 }

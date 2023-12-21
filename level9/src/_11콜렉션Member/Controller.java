@@ -23,6 +23,8 @@ public class Controller {
 		mapList.put("delete", new ActionDelete());
 		mapList.put("modificate", new ActionModificate());
 		mapList.put("print", new ActionPrint());
+		mapList.put("stock", new ActionStock());
+		mapList.put("road" , new ActionRoad());
 	}
 	public Action getAction(String key) {
 		return mapList.get(key);
