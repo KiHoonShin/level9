@@ -28,6 +28,18 @@ public abstract class Unit {
 		maxhp = max;
 		curhp = max;
 		power = pw;
-	};
+	}
 
+	void attack(Unit unit) {
+		 
+	}
+	
+	
+	 void printData() {
+		System.out.println("["+name+"] ["+curhp+"/"+maxhp+"] ["+power+"]");
+				
+	};
+	
+	
+	
 }
