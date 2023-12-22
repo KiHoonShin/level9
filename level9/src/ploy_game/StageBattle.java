@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
-public class StageBattle extends Stage {
+public class StageBattle implements Stage {
 	UnitManager unitManager = new UnitManager();
 	ArrayList<Player> playerList = null;
 	ArrayList<Unit> monList = null;
 	Random ran = new Random();
 	int monDead = 0;
 	int playerDead = 0;
-
+	
+	@Override
 	public void init() {
 		unitManager.mon_list.clear();
 		unitManager.monster_rand_set(4);
@@ -22,7 +23,7 @@ public class StageBattle extends Stage {
 		monDead = monList.size();
 		playerDead = playerList.size();
 	}
-
+  
 	void print_character() {
 		System.out.println("======[BATTLE]======");
 		// System.out.println(playerSize + " " + monSize);
@@ -87,6 +88,7 @@ public class StageBattle extends Stage {
 
 	}
 
+	@Override
 	public boolean update() {
 		boolean run = true;
 		int p_index = 0;

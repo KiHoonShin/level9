@@ -15,7 +15,7 @@ public abstract class Unit {
 		maxhp = max;
 		curhp = max;
 		power = pw;
-	};
+	};  
 
 	void init(int max, int pw) {
 		maxhp = max;
@@ -23,7 +23,7 @@ public abstract class Unit {
 		power = pw;
 	};
 
-	void init(String na, int max, int pw) {
+	void init(String na, int max, int pw) { 
 		name = na;
 		maxhp = max;
 		curhp = max;
@@ -32,9 +32,9 @@ public abstract class Unit {
 
 	void attack(Unit target) {
 		target.curhp -= power;
-		System.out.println("[" + name + "] 이 " + "[" + target.name + "] 에게 " + power + "의 데미지를 입힙니다. ");
+		System.out.println("[" + name + "] 가 " + "[" + target.name + "] 에게 " + power + "의 데미지를 입힙니다. ");
 		if (target.curhp <= 0) {
-			System.out.println("[" + target.name + "] 을 쳐치했습니다.");
+			System.out.println("[" + target.name + "] 을 처치했습니다.");
 			target.curhp = 0;
 		}
 	}

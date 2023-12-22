@@ -1,6 +1,10 @@
-package ploy_game;
+package poly_game_made_hoon_;
 
-public class StageSetting implements Stage {
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Vector;
+
+public class StageBattle implements Stage {
 
 	@Override
 	public boolean update() {
@@ -11,7 +15,7 @@ public class StageSetting implements Stage {
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 }

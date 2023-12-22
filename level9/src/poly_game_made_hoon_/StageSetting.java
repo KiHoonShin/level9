@@ -1,4 +1,4 @@
-package ploy_game;
+package poly_game_made_hoon_;
 
 public class StageSetting implements Stage {
 
