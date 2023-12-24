@@ -30,16 +30,18 @@ public abstract class Unit {
 		power = pw;
 	}
 
-	void attack(Unit unit) {
-		 
+	void printData() {
+		System.out.println("["+name+"] ["+curhp+"/"+maxhp+"] ["+power+"]" );
 	}
 	
-	
-	 void printData() {
-		System.out.println("["+name+"] ["+curhp+"/"+maxhp+"] ["+power+"]");
-				
-	};
-	
+	void attack(Unit unit) {
+		unit.curhp -= power;
+		System.out.println("["+name+"] 가 " + "["+unit.name+"] 에게 " + power +"의 데미지를 입힙니다."  );
+		if(unit.curhp <= 0) {
+			System.out.println(unit.name + "를 처치했습니다.");
+			unit.curhp = 0;
+		}
+	}
 	
 	
 }
