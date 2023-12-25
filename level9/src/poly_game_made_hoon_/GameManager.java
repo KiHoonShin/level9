@@ -6,10 +6,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameManager {
-	Random rd = new Random();
 	static Scanner sc = new Scanner(System.in);
-	static String nextStage = "";
 	String curStage = "";
+	static String nextStage = "";
 	Map<String, Stage> stageList = new HashMap<String, Stage>();
 	
 	GameManager(){
@@ -20,12 +19,12 @@ public class GameManager {
 		nextStage = "TITLE";
 	}
 	
-	boolean changeStage() {
+	boolean change_stage() {
 		System.out.println("curStage : " + curStage);
 		System.out.println("nextStage : " + nextStage);
-		if(curStage.equals(nextStage)) {
-			return true;
-		}
+		
+		if(curStage.equals(nextStage)) return true;
+		
 		curStage = nextStage;
 		Stage stage = stageList.get(curStage);
 		stage.init();
@@ -33,8 +32,12 @@ public class GameManager {
 		boolean run = true;
 		while(true) {
 			run = stage.update();
-			if(run == false) break;
+			
+			if(run == false) {
+				break;
+			}
 		}
+		
 		if(nextStage.equals("")) {
 			return false;
 		} else {
@@ -44,11 +47,10 @@ public class GameManager {
 	
 	static int getValue(String msg, int start, int end) {
 		while(true) {
-			System.out.printf("%s >> ", msg, start, end);
+			System.out.printf("%s 선택 >> ",msg,start,end);
 			try {
 				int sel = sc.nextInt();
-				sc.nextLine();
-				if (sel < start || sel > end) {
+				if(sel < start || sel > end) {
 					System.out.println("범위 오류");
 					continue;
 				}
@@ -57,8 +59,10 @@ public class GameManager {
 				System.out.println("숫자만 입력하세요");
 				sc.nextLine();
 			}
+			
 		}
 	}
+	
 	
 	
 }
